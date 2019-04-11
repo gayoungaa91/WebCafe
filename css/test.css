@@ -1,0 +1,661 @@
+@charset "urf-8";
+@import url("https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css");
+@import url("fontello.css");
+@import url("./normalize.css");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}?///
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+/* 기본스타일 */
+html{
+    font-size:10px;
+}
+body{
+    font-size:1.4rem; /* 10px * 1.4 = 14px */
+    font-family: 'Spoqa Han Sans',sans-serif;
+    font-weight: 400;
+    background:  url("images/bg_flower.png") no-repeat 50% 0, #aaa linear-gradient(#aaa 0%, #ccc 40%, #eee 70%, #fff 100%);
+    /* background-color: #aaa; */
+    color:#181818;
+}
+/*
+    a:link{방문한적 없는 상태 
+        color:green;
+    }
+    a:visited{ 방문한적 있는 상태
+        color:gray;
+    }
+    a:hover, a:focus{
+        color:red;
+    }
+    focus{ 현재 포커스된 상태, hover나 focus 는 link와 visited보다 뒤에 나와야함. }
+*/
+
+a{
+    /* color:inherit;  브라우저에서 제공되는 색상이 아닌, 부모의 색상을 그대로 상속받으라는 뜻, 부모(body)의 색상을 바꾸면 자동으로 색상 변경 */
+    color:inherit;
+    text-decoration: none;
+}
+/* 숨김 콘턴츠 */
+.readable-hidden, legend{
+    position: absolute;
+    width:1px;
+    height:1px;
+    overflow: hidden;
+    margin:-1px;
+    clip:rect(0, 0, 0, 0);
+}
+/* float 이슈를 해결하기 위한 css 모듈 */
+.clearfix::after{ /* 요소를 만드는것 before , after  의 경우 :: 두개(인라인상자), hover 같은 경우 : 한개 */
+    clear: both;
+    content: "";
+    display: block;
+}
+.container{
+    
+    /*height:100vh  vh - viewport height 크기 */
+}
+.header, .visual, .main, .slogan, .footer{
+    width:940px;
+    margin:0 auto;
+}
+/* 헤더 */
+.header{
+   /* height:10vh;  10분의 1 */
+    position: relative;
+    background: #fff;
+    min-height: 100px;
+    padding:0px 30px 38px;
+    border-radius: 0 0 15px 15px;
+}
+/*로고*/
+.logo{
+    position: absolute; 
+    /* 
+        어떤 성격이였든 position: absolute; 가 선언되면 무조건 block 이된다. 크기가 줄어드는 것처럼 보이는건 width , height 를 설정해주지 않아서 원래 가지고 있는 img 크기만큼 영역이 잡힌다. 그래서 inline 모드처럼 보이는것뿐 
+        float도 선언하면 block 상자가 된다.
+        block 은 width , height 를 지정할 수 있기 때문에 block 인거지, 전체 크기를 갖고 있어서가 아님. inline은 width, height 를 가질수 없기때문에
+    */
+    top:50px;
+    left:65px;
+    z-index: 10;
+}
+/* 멤버링크 */
+.member{
+    /*display: flex;
+     flex-direction: row; 현재는 기본값이 row라서 생략 가능 
+    justify-content: flex-end;*/
+    text-align: right;
+    padding:2px 0;
+    position: relative;
+    right:-10px;
+}
+.member li, .member li a{
+    display: inline-block;
+}
+.member li:nth-child(n+2)::before{
+    content: ":";
+}
+.member a{
+    padding:8px 7px 8px 10px;
+    text-transform: uppercase;
+}
+
+/* 메인메뉴 */
+.menu{
+    /* background-image: linear-gradient(-45deg, red, green); */
+    /* background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); */
+    height:47px;
+    padding-left:225px;
+    border-top:2px solid black;
+    border-radius: 0 0 5px 5px;
+    background: #dd762c linear-gradient(to bottom, #fcbf32 0%,#dd762c 35%,#ea9f2e 70%,#ef9f2f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* background: #dd762c linear-gradient(to bottom, #fcbf32 0%,#dd762c 35%,#ea9f2e 70%,#ef9f2f 100%); 
+    맨앞에 진한 컬러코드를 넣는경우는 익스 하위버전이나 그라데이션이 안보일 경우를 대비해서 선언해준다.
+    */
+}
+
+.menu-item{
+    position: relative;
+    float: left;
+}
+
+.menu-item-text{
+    display: block;
+    font-size:1.6rem;
+    font-weight: 700;
+    line-height: 45px; /* menu에 높이를 47로 줬던건 border값을 포함해서 높이를 준거고, line-height 로 세로 정렬할때는 보더값을 빼고 준다 */
+    padding:0px 20px;
+    color:#fff;
+    border-left:2px solid  rgba(255,255,255,0.5);
+    text-shadow: 1px 0px 0 #000, 0px 1px 0 #000, -1px 0px 0 #000, 0px -1px 0 #000;
+    /* 1px 1px 은 오른쪽 왼쪽이다. 마이너스를 쓰면 왼쪽 위쪽 값으로 생긴다. 마지막 0은 흐릿하게 처리해주는거 */
+}
+
+
+
+.menu-act .menu-item-text{
+    color:yellow !important;
+}
+.menu-act .menu-item-text::after{
+    display: block;
+    content: "";
+    border-bottom: 2px solid #000;
+}
+
+
+.sub-menu{
+    position: absolute;
+    top:47px;
+    white-space: nowrap;
+    background: cyan;
+    display: none; 
+}
+.menu-act .sub-menu{
+    display: block !important;
+}
+.sub-menu a{
+    padding:8px 0px;
+    margin-right:10px;
+}
+.sub-menu1, .sub-menu2, .sub-menu3{
+    left:0;
+}
+.sub-menu4, .sub-menu5, .sub-menu6{
+    right:0;
+}
+.sub-menu li, .sub-menu a{
+    display: inline-block;
+}
+
+
+
+/* 비주얼 영역 */
+
+.visual{
+    height:120px;
+    position: relative;
+}
+
+/* 배경 애니메이션 */
+@keyframes flowerAni{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.visual::before, .visual::after{
+    /*animation-name: flowerAni;
+    animation-duration: 2s; 1.먼저나와야함
+    animation-iteration-count: infinite; 숫자 3을 넣으면 3번 반복, infinite를 주면 무한반복된다 
+    animation-direction: alternate; 진행방향  2.뒤에 나와야함
+    animation-play-state: paused; 무한반복되지 않게 하는방법. 버튼 누르면 정지하게 될때 보통 사용한다.*/
+    animation: flowerAni 2s infinite alternate;
+    content: "";
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-repeat: no-repeat;
+}
+.visual::before{
+    background-image: url("images/ani_flower_01.png"), url("images/ani_flower_02.png");
+    background-position: 0 -10px, 670px 0;
+}
+.visual::after{
+    background-image: url("images/ani_flower_03.png"), url("images/ani_flower_04.png");
+    background-position: 300px 0px, 800px 0; 
+    animation-delay: 1s;
+}
+@keyframes textAni{
+    0%{
+        font-size:12px; /* 컨퍼런스를 할때 rem em단위는 위험할 수 있어서 px로 준다 */
+        color:rgba(0,0,0,0);
+        transform: translate(0,0);
+    }
+    100%{
+        font-size:24px;
+        color: rgba(0,0,0,1);
+        transform: translate(400px,75px);
+    }
+}
+
+
+/* 텍스트 애니메이션 */
+.visual-text{
+    /* position: absolute; display: inline-block; 둘다가능*/
+    position: absolute;
+    z-index:10;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    animation-name: textAni;
+    animation-duration:2000ms;
+    animation-fill-mode: forwards; /* 종료상태로 보여라 */
+}
+
+
+/* 메인 콘텐츠 */
+.main{
+    /*
+    Normal Flow
+
+    display: flex; flex 가 row방향인지 column 방향인지가 중요하다
+    flex-direction: row;  row방향에서 오른쪽으로 변경 end라고 부름 , 왼쪽이면 start / reverse가 중요함
+    justify-content: space-between; 균등하게 패딩또는마진값을 반영해줌 
+    */
+    padding:30px 15px;
+    min-height:450px;
+    border-radius: 15px 15px 0 0;
+    background: #fff;
+}
+
+.group{
+    float: left; /* float을 해주면 자식 높이를 잃어버리기 때문에 main의 높이값이 상실된다.  */
+    margin:0 15px;
+}
+.group1{
+    width:250px; 
+    
+}
+.group2{
+   /* order:-1;  flex 모드이면 -1를 선언할경우 가장 앞으로 이동됨 */
+    width:380px; 
+ /* float 는 linebox를 이해해야한다 */
+    
+}
+.group3{
+    width:190px;
+}
+/* 로그인 */
+.login{
+    background: radial-gradient(circle at right top, #ea9f2e, #dd762c); /* 오른쪽 상단부터 정원모양으로 바꿔라 */
+    border-radius: 5px;
+    padding:10px;
+    box-shadow: 5px 5px #aaa;
+}
+.login-heading{
+    color:yellow;
+    font-size:1.5rem;
+    font-weight: 700;
+    text-indent: 1em;
+}
+.login-form{
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    padding:10px 10px 0px;
+    margin-top:10px;
+}
+.sign{
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    padding:8px 10px;
+}
+.sign li{
+    letter-spacing: -1px;
+}
+.sign li:first-child{
+    float: left;
+}
+.sign li:last-child{
+    float: right;
+}
+
+.login-form fieldset{
+    position: relative;
+    padding-bottom:10px;
+    border-bottom: 1px solid #aaa;
+}
+.login-form label{
+    display: inline-block;
+    width:4em; /* px로 주면 글자크기가 커질경우 넘치기 때문에 이럴경우 em단위로 주는게 바람직하다 */
+}
+.login-form input{
+    width:90px;
+    height:22px;
+    padding:1px 1px 1px 5px;
+    border:1px solid #aaa;
+}
+.btn-login{
+    position: absolute;
+    top:0;
+    right:0;
+    width:50px;
+    height:50px;
+    border:0;
+    padding:2px;
+    font-size:1.3rem;
+    color:#fff;
+    background: #dd762c;
+    border-radius: 3px;
+}
+.user-pw{
+    margin-top:6px;
+}
+
+.sign .icon-right-open::before{
+    color:orange
+}
+
+.validationlist{
+    margin-top:25px;
+}
+.validationlist a{
+    display: block;
+    border:1px solid #aaa;
+    background:url("images/validation_icon.png") no-repeat 20px 50%, linear-gradient(#ccc, #eee) repeat 0 0;/* linear-gradient은 repeat 0 0 생략가능*/
+    border-radius: 30px;
+    height:30px;
+    line-height: 28px;
+    padding-left:45px;
+    margin-top:10px;
+}
+
+/* 웹관련 용어 */
+/*
+.term{
+    margin-top:20px;
+    background:#ccc linear-gradient(#ccc, #eee);
+    border:1px solid #aaa;
+    border-radius: 5px;
+    padding:10px 15px;
+}
+.term-heading{
+    font-size:1.5rem;
+    font-weight: 700;
+}
+
+.term div{
+    margin-top:10px;
+}
+.term-list-subject{
+    margin-top:-4px;
+}
+.term-list-subject, .term-list-brief{
+    float: right;
+    width:145px;
+}
+.term-list-thumbnail{
+    float: left;
+}
+.term-list-thumbnail img{
+    vertical-align: top;
+}
+
+.term-list-brief{
+    margin-top:5px;
+}
+
+
+.even .term-list-subject, .even .term-list-brief{
+    float: left;
+}
+.even .term-list-thumbnail{
+    float: right;
+}
+*/
+/* 검색폼 */
+.search{
+    background: #ccc linear-gradient(#ccc,#eee);
+    border:1px solid #aaa;
+    border-bottom:0;
+    border-radius: 15px 15px 0 0;
+    padding:15px 25px 10px;
+}
+
+
+.search-form input{
+    width:195px;
+    height:24px;
+    border:1px solid #aaa;
+    border-radius: 3px;
+    padding:1px 1px 1px 5px;
+}
+.btn-search{
+    border:1px solid #aaa;
+    border-radius: 3px;
+    padding:1px 10px;
+    height:24px;
+    background: #333;
+    color:#fff;
+    font-size:85%
+}
+.search-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+.search{
+    padding:15px 20px;
+    background:#ccc linear-gradient(#ccc, #eee);
+    border:1px solid #aaa;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom:0px;
+}
+
+.search-form fieldset div{
+    display: flex;
+    justify-content:space-between;
+    height:30px;
+    line-height: 30px;
+}
+.search-form input{
+    width:200px;
+    padding-left:5px;
+}
+.btn-search{
+    padding:0px 10px;
+    background: #333;
+    color:#fff;
+    border:1px solid #333;
+    border-radius: 3px;
+}
+*/
+
+.term-list-thumbnail{
+    float: left;
+}
+.term-list-subject, .term-list-brief{
+    float: right;
+    width:160px;
+    background: yellow;
+}
+
+/*
+.term{
+    margin-top:20px;
+    padding:10px 15px;
+    border:1px solid #aaa;
+    border-radius: 5px;
+    background: linear-gradient(#ccc, #eee) repeat 0 0;;
+}
+.term div{
+    margin-top:10px;
+}
+.term div::after{
+    clear: both;
+    content: "";
+    display: block;
+}
+.term .term-heading{
+    font-size:1.6rem;
+    font-weight: 600;
+}
+.term-list-subject{
+    margin-bottom:5px;
+    color:#296897;
+}
+.term-list-thumbnail{
+    float: left;
+    width:60px;
+}
+
+.term-list-subject, .term-list-brief{
+    float:right;
+    width:150px;
+    padding-left:5px;
+}
+
+.even .term-list-thumbnail{
+    float: right;
+}
+
+.even .term-list-subject, .even .term-list-brief{
+    float: left;
+    width:150px;
+    padding: 0 5px 0 0;
+}*/
+
+/* 주석처리는 내가 한것
+.login{
+    padding:10px;
+    border-radius: 5px;
+    background: orange;
+    box-shadow:5px 5px 5px #aaa;
+}
+
+.login-heading{
+    margin-bottom:10px;
+    padding-left:10px;
+    color:yellow;
+    font-weight: 600;
+}
+fieldset{
+    padding:10px;
+    border-radius: 5px 5px 0px 0px;
+    background: #fff;
+}
+.user-email, .user-pw{
+    float: left;
+    height:20px;
+    font-size:1.4rem;
+}
+.user-email{
+    margin-bottom:5px;
+}
+.user-email label, .user-pw label{
+    display: inline-block;
+    width:60px; 
+    height:20px;
+    margin:0;
+}
+.user-email input, .user-pw input{
+   width:95px;
+   margin:0;
+}
+
+.btn-login{
+    display: inline-block;
+    width:50px;
+    height:50px;
+    margin-left:5px;
+    font-size:1.3rem;
+    background: orange;
+    border:1px solid orange;
+    border-radius: 5px;
+    color:#fff;
+}
+.sign{
+    clear: both;
+    padding:0px 10px;
+    height:40px;
+    background: #fff;
+    border-radius: 0px 0px 5px 5px;
+}
+.sign::after{
+    content: "";
+    display: block;
+    width:100%;
+    height:1px;
+    padding:10px;
+    border-top:1px solid #aaa
+}
+.sign li{
+    float: left;
+    font-size:1.3rem;
+    padding-top:10px;
+}
+.sign li:last-child{
+    padding-left:10px;
+}
+.sign li.icon-right-open::before{
+    color:orange
+}
+
+*/
+/*
+.clearfix{
+    clear: both;
+}
+*/
+
+
+
+/*  */
+.slogan{
+    /*clear: both;  clear 속성은 반드시 block 요소에만 준다. -> clear는 강제로 마진을 추가하는 기능. 강제로 마진을 준 상태이기 때문에 추가적으로 주는 마진은 추가가 안됨  */
+    height:10vh;
+    background: tomato;
+}
+.footer-bg{
+    background: purple;
+}
+.footer{
+    height:10vh;
+    background: yellow;
+}
